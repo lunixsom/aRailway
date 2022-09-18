@@ -1,9 +1,9 @@
-console.log('Estoy usando nodemon')
+console.log('Estoy usando nodemon clase 42 test')
 
 // > Como usamos la api node http? tenemos que requerirlo (importarlo):
 
 const http = require('node:http')
-const moment = require('moment')
+const momenta = require('moment')
 
 let contadorVisitas = 0
 
@@ -21,16 +21,21 @@ const server = http.createServer((request, response) => {
             //console.log(response)
             response.writeHead(200, {'content-type': 'text/html'})
             response.write('<h2> Hola soy un servidor HTTP con NODE</h2>')
-            response.write(`<h2>Visitas: ${++contadorVisitas}</h2>`)
+            response.write(`<h2 style="color:blueviolet"> Visitas: ${++contadorVisitas}</h2>`)
             response.end()
-        } else if (url === '/otra-url'){
+        }
+        if (url === '/otra-url'){
             response.writeHead(200, {'content-type': 'text/html'})
-            response.write(`<h2 style="color: crimson">Error 404. Ruta <span style="color:blue">${url}</span> no implementada</h2>`)
+            response.write(`<h2 style="color:green"> Esta es la url: ${url}</h2>`)
             response.end()
-        } else if (url === '/fecha'){
+        }
+        if (url === '/fecha'){
             response.writeHead(200, {'content-type': 'text/html'})
-            response.write(`<h2 style="color: crimson">La fecha y hora actual es: ${moment().format('LLL')}</h2>`)
+            response.write(`<h2> La fecha de hoy es: ${momenta().format('LLL')}</h2>`)
             response.end()
+        } else {
+            response.writeHead(200, {'content-type': 'text/html'})
+            response.end(`<h2 style="color:red"> Error 404. Ruta ${url} no encontrada</h2>`)
         }
     }
 })
