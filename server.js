@@ -24,12 +24,12 @@ const server = http.createServer((request, response) => {
             response.write(`<h2 style="color:blueviolet"> Visitas: ${++contadorVisitas}</h2>`)
             response.end()
         }
-        if (url === '/otra-url'){
+        else if (url === '/otra-url'){
             response.writeHead(200, {'content-type': 'text/html'})
             response.write(`<h2 style="color:green"> Esta es la url: ${url}</h2>`)
             response.end()
         }
-        if (url === '/fecha'){
+        else if (url === '/fecha'){
             response.writeHead(200, {'content-type': 'text/html'})
             response.write(`<h2> La fecha de hoy es: ${momenta().format('LLL')}</h2>`)
             response.end()
